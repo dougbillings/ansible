@@ -3,6 +3,11 @@
   become: true
 
   tasks:
+    - name: install updates (ubuntu)
+      apt:
+        upgrade: dist
+        update_cache: yes
+
     - name: Install aptitude
       apt:
         name: aptitude
@@ -54,7 +59,7 @@
 
     - name: Install Docker-Compose&Set Permission
       ansible.builtin.get_url:
-        url: https://github.com/docker/compose/releases/download/1.29.2/docker-compose-Linux-x86_64
+        url: https://github.com/docker/compose/releases/download/2.27.1/docker-compose-Linux-x86_64
         dest: /usr/local/bin/docker-compose
         mode: '755'
 
